@@ -10,9 +10,7 @@ public class DictionaryManagement extends Dictionary {
         String integerPattern = "[+]?\\d+$";
         while (!keyboard.hasNext(integerPattern)) {
             String x = keyboard.nextLine();
-            System.out.printf(
-                    "'%s' is an invalid input! Press any key and enters a single POSITIVE integer! ",
-                    x);
+            System.out.printf("'%s' is an invalid input! Press any key and enters a single POSITIVE integer! ", x);
             keyboard.nextLine();
 
             System.out.print("\033\143");
@@ -33,7 +31,6 @@ public class DictionaryManagement extends Dictionary {
 
         System.out.print("\nFinished entering ");
         System.out.printf((n > 1 ? "%d words" : "%d word"), n);
-        System.out.print(" to the database.\n\n");
+        System.out.print(" from Commandline to the database.\n\n");
     }
-
 }

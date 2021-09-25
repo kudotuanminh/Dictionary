@@ -50,7 +50,8 @@ public class DictionaryCommandline extends DictionaryManagement {
                     keyboard.nextLine();
                     break;
                 case 0:
-                    System.out.print("Goodbye!");
+                    System.out.print("\nGoodbye!");
+                    keyboard.nextLine();
                     System.exit(0);
                     break;
                 default:
