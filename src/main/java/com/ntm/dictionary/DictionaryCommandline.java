@@ -16,7 +16,7 @@ public class DictionaryCommandline extends DictionaryManagement {
         System.out.println("\n");
     }
 
-    public void dictionaryBasic() {
+    public void dictionaryAdvanced() {
         Scanner keyboard = new Scanner(System.in);
 
         int choice;
@@ -25,6 +25,7 @@ public class DictionaryCommandline extends DictionaryManagement {
             System.out.println("\t\tThis is a simple dictionary\n");
             System.out.println("1. View all words currently in the database.");
             System.out.println("2. Input words from Commandline.");
+            System.out.println("3. Input words from 'dictionaries.txt'.");
             System.out.println("0. Quit application.");
 
             System.out.print("\nEnters a number (1, 2,...) correlate to your choice: ");
@@ -49,6 +50,11 @@ public class DictionaryCommandline extends DictionaryManagement {
                     System.out.print("Press any key to continue... ");
                     keyboard.nextLine();
                     break;
+                case 3:
+                    this.insertFromFile(keyboard);
+                    System.out.print("Press any key to continue... ");
+                    keyboard.nextLine();
+                    break;
                 case 0:
                     System.out.print("\nGoodbye!");
                     keyboard.nextLine();
@@ -67,6 +73,6 @@ public class DictionaryCommandline extends DictionaryManagement {
 
     public static void main(String[] args) {
         DictionaryCommandline dict = new DictionaryCommandline();
-        dict.dictionaryBasic();
+        dict.dictionaryAdvanced();
     }
 }
