@@ -2,6 +2,8 @@
 
 This is a group project for INT2204 2 class - Object Oriented Programming
 
+## Team Members
+
 # Dependencies
 
 ## Software
@@ -18,7 +20,7 @@ To compile, run:
 mvn package
 ```
 
-in _cmd_, _Maven_ will compiles and packages to `Dictionary-(program ver).jar` in `(root directory)/target/` path.
+in _cmd_. _Maven_ will compiles and packages to `Dictionary-(program ver).jar` in `(root directory)/target/` path.
 
 ### Run
 
