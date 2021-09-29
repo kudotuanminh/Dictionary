@@ -3,6 +3,7 @@ package com.ntm.dictionary;
 import java.util.Scanner;
 
 public class DictionaryCommandline extends DictionaryManagement {
+    // in ra cac words trong yeu cau 1
     public void showAllWords() {
         System.out.print("\033\143");
         System.out.println(" No.\t| English\t| Vietnamese");
@@ -16,6 +17,22 @@ public class DictionaryCommandline extends DictionaryManagement {
         System.out.println("\n");
     }
 
+    public void WordSearcher(String s) {
+        //System.out.println("hello");
+        int dem = 0 , stt = 0;
+        for (int i = 0; i < this.getSize(); i++) {
+            Word currentWord = this.getWord(i);
+            dem = 0 ;
+            for (int j = 0; j < s.length(); j++)   if (s.charAt(j) == (currentWord.getWordTarget().charAt(j)))    ++dem;
+            if (dem != s.length())   continue;
+            else {
+                ++stt;
+                System.out.printf("%d\t| %s\t| %s\n", stt ,currentWord.getWordTarget(), currentWord.getWordExplain());
+            }
+        }
+    }
+
+    //tu dien so khai
     public void dictionaryBasic() {
         Scanner keyboard = new Scanner(System.in);
 
@@ -25,6 +42,7 @@ public class DictionaryCommandline extends DictionaryManagement {
             System.out.println("\t\tThis is a simple dictionary\n");
             System.out.println("1. View all words currently in the database.");
             System.out.println("2. Input words from Commandline.");
+            System.out.println("3. Search in TrucLinhconghai.");
             System.out.println("0. Quit application.");
 
             System.out.print("\nEnters a number (1, 2,...) correlate to your choice: ");
@@ -47,6 +65,14 @@ public class DictionaryCommandline extends DictionaryManagement {
                 case 2:
                     this.insertFromCommandline(keyboard);
                     System.out.print("Press any key to continue... ");
+                    keyboard.nextLine();
+                    break;
+                case 3:
+                    System.out.println("Word you need to find :" );
+                    String finds = this.search_tester();
+                    System.out.println("--------suggested for you-------:" );
+                    this.WordSearcher(finds);
+                    System.out.println("-----------------------------------------------");
                     keyboard.nextLine();
                     break;
                 case 0:

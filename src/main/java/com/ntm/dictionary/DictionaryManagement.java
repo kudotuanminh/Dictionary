@@ -33,4 +33,10 @@ public class DictionaryManagement extends Dictionary {
         System.out.printf((n > 1 ? "%d words" : "%d word"), n);
         System.out.print(" from Commandline to the database.\n\n");
     }
+    public String search_tester(){
+        Scanner input = new Scanner(System.in);
+
+        String wordfind = input.nextLine();
+        return wordfind;
+    }
 }

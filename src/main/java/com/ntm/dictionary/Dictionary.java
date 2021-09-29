@@ -1,9 +1,10 @@
 package com.ntm.dictionary;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 public class Dictionary {
-    private ArrayList<Word> words = new ArrayList<Word>();
+    private Vector<Word> words = new Vector<Word>();
+
 
     public void addWord(Word word) {
         words.add(word);
