@@ -86,4 +86,10 @@ public class DictionaryManagement extends Dictionary {
     public void dictionaryLookup(Scanner keyboard) {
 
     }
+    public String search_tester(){
+        Scanner input = new Scanner(System.in);
+
+        String wordfind = input.nextLine();
+        return wordfind;
+    }
 }

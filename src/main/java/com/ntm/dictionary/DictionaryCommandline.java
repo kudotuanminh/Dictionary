@@ -18,6 +18,20 @@ public class DictionaryCommandline extends DictionaryManagement {
         System.out.println("\n");
     }
 
+    public void WordSearcher(String s) {
+        int dem = 0 , stt = 0;
+        for (int i = 0; i < this.getSize(); i++) {
+            Word currentWord = this.getWord(i);
+            dem = 0 ;
+            for (int j = 0; j < s.length(); j++)   if (s.charAt(j) == (currentWord.getWordTarget().charAt(j)))    ++dem;
+            if (dem != s.length())   continue;
+            else {
+                ++stt;
+                System.out.printf("%d\t| %s\t| %s\n", stt ,currentWord.getWordTarget(), currentWord.getWordExplain());
+            }
+        }
+    }
+
     /**
      * Advanced version of the commandline dictionary.
      *
@@ -60,6 +74,14 @@ public class DictionaryCommandline extends DictionaryManagement {
                 case 3:
                     this.insertFromFile(keyboard);
                     System.out.print("Press any key to continue... ");
+                    keyboard.nextLine();
+                    break;
+                case 4:
+                    System.out.println("Word you need to find :" );
+                    String finds = this.search_tester();
+                    System.out.println("--------suggested for you-------:" );
+                    this.WordSearcher(finds);
+                    System.out.println("-----------------------------------------------");
                     keyboard.nextLine();
                     break;
                 case 0:

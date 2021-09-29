@@ -1,6 +1,6 @@
 package com.ntm.dictionary;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 /** Held logics for a Dictionary. */
 public class Dictionary {
