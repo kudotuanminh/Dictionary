@@ -1,5 +1,6 @@
 package com.ntm.dictionary;
 
+import java.io.*;
 import java.util.Scanner;
 
 /** Held logics to manage the Dictionary. */
@@ -38,5 +39,51 @@ public class DictionaryManagement extends Dictionary {
         System.out.print("\nFinished entering ");
         System.out.printf((n > 1 ? "%d words" : "%d word"), n);
         System.out.print(" from Commandline to the database.\n\n");
+    }
+
+    /**
+     * Function to start entering words from 'dictionaries.txt' to the Dictionary's
+     * data.
+     *
+     * @param keyboard The current Scanner that are getting data from keyboard.
+     */
+    public void insertFromFile(Scanner keyboard) {
+        try {
+            BufferedReader fileReader = new BufferedReader(new FileReader("./resources/dictionaries.txt"));
+
+            System.out.print("\033\143");
+            System.out.print(
+                    "Please make sure to verify integrity of 'dictionaries.txt' before proceeding.\nPress any key to continue... ");
+            keyboard.nextLine();
+            int n = 0;
+            String line;
+            while ((line = fileReader.readLine()) != null) {
+                String target = line;
+                line = fileReader.readLine();
+                String explain = line;
+
+                Word newWord = new Word(target, explain);
+                this.addWord(newWord);
+                n++;
+            }
+
+            System.out.print("\nFinished importing ");
+            System.out.printf((n > 1 ? "%d words" : "%d word"), n);
+            System.out.print(" from 'dictionaries.txt' to the database.\n\n");
+
+            fileReader.close();
+        } catch (IOException e) {
+            System.out.print("ERROR: File not found! Press any key to continue... ");
+            keyboard.nextLine();
+        }
+    }
+
+    /**
+     * Function to lookup word in the Dictionary's data.
+     *
+     * @param keyboard The current Scanner that are getting data from keyboard.
+     */
+    public void dictionaryLookup(Scanner keyboard) {
+
     }
 }

@@ -19,19 +19,20 @@ public class DictionaryCommandline extends DictionaryManagement {
     }
 
     /**
-     * Basic version of the commandline dictionary.
+     * Advanced version of the commandline dictionary.
      *
-     * @param keyboard The current scanner that are getting data from keyboard.
+     * @param keyboard The current Scanner that are getting data from keyboard.
      */
-    public void dictionaryBasic() {
+    public void dictionaryAdvanced() {
         Scanner keyboard = new Scanner(System.in);
 
         int choice;
         do {
             System.out.print("\033\143");
-            System.out.println("\t\tThis is a simple dictionary, basic version.\n");
+            System.out.println("\t\tThis is a simple dictionary, advanced version.\n");
             System.out.println("1. View all words currently in the database.");
             System.out.println("2. Input words from Commandline.");
+            System.out.println("3. Input words from 'dictionaries.txt'.");
             System.out.println("0. Quit application.");
 
             System.out.print("\nEnters a number (1, 2,...) correlate to your choice: ");
@@ -53,6 +54,11 @@ public class DictionaryCommandline extends DictionaryManagement {
                     break;
                 case 2:
                     this.insertFromCommandline(keyboard);
+                    System.out.print("Press any key to continue... ");
+                    keyboard.nextLine();
+                    break;
+                case 3:
+                    this.insertFromFile(keyboard);
                     System.out.print("Press any key to continue... ");
                     keyboard.nextLine();
                     break;
