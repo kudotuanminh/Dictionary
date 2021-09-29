@@ -38,7 +38,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.ntm.dictionary.DictionaryCommandline</mainClass>
+                            <mainClass>com.ntm.dictionary.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
