@@ -2,7 +2,9 @@ package com.ntm.dictionary;
 
 import java.util.Scanner;
 
+/** Held logics to create a Dictionary in the commandline */
 public class DictionaryCommandline extends DictionaryManagement {
+    /** Function to print all words that are in the Dictionary's data. */
     public void showAllWords() {
         System.out.print("\033\143");
         System.out.println(" No.\t| English\t| Vietnamese");
@@ -16,16 +18,20 @@ public class DictionaryCommandline extends DictionaryManagement {
         System.out.println("\n");
     }
 
-    public void dictionaryAdvanced() {
+    /**
+     * Basic version of the commandline dictionary.
+     *
+     * @param keyboard The current scanner that are getting data from keyboard.
+     */
+    public void dictionaryBasic() {
         Scanner keyboard = new Scanner(System.in);
 
         int choice;
         do {
             System.out.print("\033\143");
-            System.out.println("\t\tThis is a simple dictionary\n");
+            System.out.println("\t\tThis is a simple dictionary, basic version.\n");
             System.out.println("1. View all words currently in the database.");
             System.out.println("2. Input words from Commandline.");
-            System.out.println("3. Input words from 'dictionaries.txt'.");
             System.out.println("0. Quit application.");
 
             System.out.print("\nEnters a number (1, 2,...) correlate to your choice: ");
@@ -50,11 +56,6 @@ public class DictionaryCommandline extends DictionaryManagement {
                     System.out.print("Press any key to continue... ");
                     keyboard.nextLine();
                     break;
-                case 3:
-                    this.insertFromFile(keyboard);
-                    System.out.print("Press any key to continue... ");
-                    keyboard.nextLine();
-                    break;
                 case 0:
                     System.out.print("\nGoodbye!");
                     keyboard.nextLine();
@@ -69,10 +70,5 @@ public class DictionaryCommandline extends DictionaryManagement {
         } while (choice != 0);
 
         keyboard.close();
-    }
-
-    public static void main(String[] args) {
-        DictionaryCommandline dict = new DictionaryCommandline();
-        dict.dictionaryAdvanced();
     }
 }
