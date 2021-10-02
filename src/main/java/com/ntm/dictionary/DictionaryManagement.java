@@ -1,6 +1,8 @@
 package com.ntm.dictionary;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.Scanner;
+import java.io.IOException;
 
 public class DictionaryManagement extends Dictionary {
     public void insertFromCommandline(Scanner keyboard) {
@@ -33,6 +35,38 @@ public class DictionaryManagement extends Dictionary {
         System.out.printf((n > 1 ? "%d words" : "%d word"), n);
         System.out.print(" from Commandline to the database.\n\n");
     }
+
+    public void insertFromFile(Scanner keyboard) {
+        try {
+            BufferedReader fileReader = new BufferedReader(new FileReader("./resources/dictionaries.txt"));
+
+            System.out.print("\033\143");
+            System.out.print(
+                    "Please make sure to verify integrity of 'dictionaries.txt' before proceeding.\nPress any key to continue... ");
+            keyboard.nextLine();
+            int n = 0;
+            String line;
+            while ((line = fileReader.readLine()) != null) {
+                String target = line;
+                line = fileReader.readLine();
+                String explain = line;
+
+                Word newWord = new Word(target, explain);
+                this.addWord(newWord);
+                n++;
+            }
+
+            System.out.print("\nFinished importing ");
+            System.out.printf((n > 1 ? "%d words" : "%d word"), n);
+            System.out.print(" from 'dictionaries.txt' to the database.\n\n");
+
+            fileReader.close();
+        } catch (IOException e) {
+            System.out.print("ERROR: File not found! Press any key to continue... ");
+            keyboard.nextLine();
+        }
+    }
+
     public String search_tester(){
         Scanner input = new Scanner(System.in);
 
