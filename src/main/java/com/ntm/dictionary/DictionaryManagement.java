@@ -2,6 +2,7 @@ package com.ntm.dictionary;
 
 import java.io.*;
 import java.util.Scanner;
+import java.io.IOException;
 
 /** Held logics to manage the Dictionary. */
 public class DictionaryManagement extends Dictionary {

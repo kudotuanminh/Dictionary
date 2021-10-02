@@ -84,6 +84,11 @@ public class DictionaryCommandline extends DictionaryManagement {
                     System.out.println("-----------------------------------------------");
                     keyboard.nextLine();
                     break;
+                case 4:
+                    this.insertFromFile(keyboard);
+                    System.out.print("Press any key to continue... ");
+                    keyboard.nextLine();
+                    break;
                 case 0:
                     System.out.print("\nGoodbye!");
                     keyboard.nextLine();
