@@ -3,7 +3,7 @@ package com.ntm.dictionary;
 import java.util.Vector;
 
 public class Dictionary {
-    private Vector<Word> words = new Vector<Word>();
+    public static Vector<Word> words = new Vector<Word>();
 
 
     public void addWord(Word word) {

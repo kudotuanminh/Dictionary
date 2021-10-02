@@ -1,5 +1,5 @@
 package com.ntm.dictionary;
-
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class DictionaryCommandline extends DictionaryManagement {
@@ -42,7 +42,8 @@ public class DictionaryCommandline extends DictionaryManagement {
             System.out.println("\t\tThis is a simple dictionary\n");
             System.out.println("1. View all words currently in the database.");
             System.out.println("2. Input words from Commandline.");
-            System.out.println("3. Search in TrucLinhconghai.");
+            System.out.println("3. Search in Kudo.");
+            System.out.println("4. Insert From File .");
             System.out.println("0. Quit application.");
 
             System.out.print("\nEnters a number (1, 2,...) correlate to your choice: ");
@@ -81,9 +82,9 @@ public class DictionaryCommandline extends DictionaryManagement {
                     keyboard.nextLine();
                     break;
                 case 0:
-                    System.out.print("\nGoodbye!");
+                    System.out.print("\nGoodbye! Please Press any key to export to File");
                     keyboard.nextLine();
-                    System.exit(0);
+                    //System.exit(0);
                     break;
                 default:
                     System.out.printf(
@@ -92,12 +93,26 @@ public class DictionaryCommandline extends DictionaryManagement {
                     break;
             }
         } while (choice != 0);
-
         keyboard.close();
     }
 
     public static void main(String[] args) {
         DictionaryCommandline dict = new DictionaryCommandline();
         dict.dictionaryBasic();
+
+
+        //Export to File dictionaries.txt
+        // source:https://stackoverflow.com/questions/6548157/how-to-write-an-arraylist-of-strings-into-a-text-file
+        try {
+            FileWriter fw = new FileWriter("C:\\Users\\Vo Dinh Huy\\OneDrive\\Documents\\GitHub\\Dictionary\\resources\\dictionaries.txt");
+            for (int i = 0; i < Dictionary.words.size(); i++) {
+                fw.write(words.get(i).getWordTarget() + "\n");
+                fw.write(words.get(i).getWordExplain() + "\n");
+            }
+            fw.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("Success Export to File");
     }
 }
