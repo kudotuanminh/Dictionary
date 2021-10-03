@@ -7,29 +7,19 @@ public class DictionaryCommandline extends DictionaryManagement {
     /** Function to print all words that are in the Dictionary's data. */
     public void showAllWords() {
         System.out.print("\033\143");
-        System.out.println(" No.\t| English\t| Vietnamese");
-        System.out.println("-----------------------------------------------");
+
+        String leftAlignFormat = "| %-4d | %-15s | %-15s |%n";
+
+        System.out.format("+------+-----------------+-----------------+%n");
+        System.out.format("| No.  | English         | Vietnamese      |%n");
+        System.out.format("+------+-----------------+-----------------+%n");
 
         for (int i = 0; i < this.getSize(); i++) {
             Word currentWord = this.getWord(i);
-            System.out.printf(" %d\t| %s\t\t| %s\n", i + 1, currentWord.getWordTarget(), currentWord.getWordExplain());
+            System.out.format(leftAlignFormat, i + 1, currentWord.getWordTarget(), currentWord.getWordExplain());
         }
 
-        System.out.println("\n");
-    }
-
-    public void WordSearcher(String s) {
-        int dem = 0 , stt = 0;
-        for (int i = 0; i < this.getSize(); i++) {
-            Word currentWord = this.getWord(i);
-            dem = 0 ;
-            for (int j = 0; j < s.length(); j++)   if (s.charAt(j) == (currentWord.getWordTarget().charAt(j)))    ++dem;
-            if (dem != s.length())   continue;
-            else {
-                ++stt;
-                System.out.printf("%d\t| %s\t| %s\n", stt ,currentWord.getWordTarget(), currentWord.getWordExplain());
-            }
-        }
+        System.out.format("+------+-----------------+-----------------+%n");
     }
 
     /**
@@ -45,8 +35,9 @@ public class DictionaryCommandline extends DictionaryManagement {
             System.out.print("\033\143");
             System.out.println("\t\tThis is a simple dictionary, advanced version.\n");
             System.out.println("1. View all words currently in the database.");
-            System.out.println("2. Input words from Commandline.");
-            System.out.println("3. Input words from 'dictionaries.txt'.");
+            System.out.println("2. Search for words in the database.");
+            System.out.println("3. Input words from Commandline.");
+            System.out.println("4. Input words from '/resources/dictionaries.txt'.");
             System.out.println("0. Quit application.");
 
             System.out.print("\nEnters a number (1, 2,...) correlate to your choice: ");
@@ -67,21 +58,13 @@ public class DictionaryCommandline extends DictionaryManagement {
                     keyboard.nextLine();
                     break;
                 case 2:
-                    this.insertFromCommandline(keyboard);
+                    this.dictionaryLookup(keyboard);
                     System.out.print("Press any key to continue... ");
                     keyboard.nextLine();
                     break;
                 case 3:
-                    this.insertFromFile(keyboard);
+                    this.insertFromCommandline(keyboard);
                     System.out.print("Press any key to continue... ");
-                    keyboard.nextLine();
-                    break;
-                case 4:
-                    System.out.println("Word you need to find :" );
-                    String finds = this.search_tester();
-                    System.out.println("--------suggested for you-------:" );
-                    this.WordSearcher(finds);
-                    System.out.println("-----------------------------------------------");
                     keyboard.nextLine();
                     break;
                 case 4:

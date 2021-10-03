@@ -2,7 +2,6 @@ package com.ntm.dictionary;
 
 import java.io.*;
 import java.util.Scanner;
-import java.io.IOException;
 
 /** Held logics to manage the Dictionary. */
 public class DictionaryManagement extends Dictionary {
@@ -85,12 +84,35 @@ public class DictionaryManagement extends Dictionary {
      * @param keyboard The current Scanner that are getting data from keyboard.
      */
     public void dictionaryLookup(Scanner keyboard) {
+        System.out.print("\033\143");
+        System.out.print("Word to search: ");
+        String s = keyboard.nextLine();
 
-    }
-    public String search_tester(){
-        Scanner input = new Scanner(System.in);
+        String leftAlignFormat = "| %-4d | %-15s | %-15s |%n";
 
-        String wordfind = input.nextLine();
-        return wordfind;
+        System.out.format("+------+-----------------+-----------------+%n");
+        System.out.format("| No.  | English         | Vietnamese      |%n");
+        System.out.format("+------+-----------------+-----------------+%n");
+
+        int dem;
+        int stt = 0;
+        for (int i = 0; i < this.getSize(); i++) {
+            Word currentWord = this.getWord(i);
+            dem = 0;
+            for (int j = 0; j < s.length(); j++) {
+                if (Character.toLowerCase(s.charAt(j)) == Character
+                        .toLowerCase(currentWord.getWordTarget().charAt(j))) {
+                    dem++;
+                }
+            }
+            if (dem != s.length()) {
+                continue;
+            } else {
+                stt++;
+                System.out.format(leftAlignFormat, stt, currentWord.getWordTarget(), currentWord.getWordExplain());
+            }
+        }
+
+        System.out.format("+------+-----------------+-----------------+%n");
     }
 }

@@ -1,6 +1,14 @@
-Cat
-Con mồn lèo
-Dog
-Con chồn ló
-Horse
-Con ngộn lừa
+cat
+Con mèo
+dog
+Con chó
+horse
+Con ngựa
+transport
+Vận chuyển
+translate
+Phiên dịch
+transform
+Biến đổi
+transit
+Quá cảnh
