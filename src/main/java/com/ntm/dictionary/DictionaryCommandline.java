@@ -7,31 +7,37 @@ public class DictionaryCommandline extends DictionaryManagement {
     /** Function to print all words that are in the Dictionary's data. */
     public void showAllWords() {
         System.out.print("\033\143");
-        System.out.println(" No.\t| English\t| Vietnamese");
-        System.out.println("-----------------------------------------------");
+
+        String leftAlignFormat = "| %-4d | %-15s | %-15s |%n";
+
+        System.out.format("+------+-----------------+-----------------+%n");
+        System.out.format("| No.  | English         | Vietnamese      |%n");
+        System.out.format("+------+-----------------+-----------------+%n");
 
         for (int i = 0; i < this.getSize(); i++) {
             Word currentWord = this.getWord(i);
-            System.out.printf(" %d\t| %s\t\t| %s\n", i + 1, currentWord.getWordTarget(), currentWord.getWordExplain());
+            System.out.format(leftAlignFormat, i + 1, currentWord.getWordTarget(), currentWord.getWordExplain());
         }
 
-        System.out.println("\n");
+        System.out.format("+------+-----------------+-----------------+%n");
     }
 
     /**
-     * Basic version of the commandline dictionary.
+     * Advanced version of the commandline dictionary.
      *
-     * @param keyboard The current scanner that are getting data from keyboard.
+     * @param keyboard The current Scanner that are getting data from keyboard.
      */
-    public void dictionaryBasic() {
+    public void dictionaryAdvanced() {
         Scanner keyboard = new Scanner(System.in);
 
         int choice;
         do {
             System.out.print("\033\143");
-            System.out.println("\t\tThis is a simple dictionary, basic version.\n");
+            System.out.println("\t\tThis is a simple dictionary, advanced version.\n");
             System.out.println("1. View all words currently in the database.");
-            System.out.println("2. Input words from Commandline.");
+            System.out.println("2. Search for words in the database.");
+            System.out.println("3. Input words from Commandline.");
+            System.out.println("4. Input words from '/resources/dictionaries.txt'.");
             System.out.println("0. Quit application.");
 
             System.out.print("\nEnters a number (1, 2,...) correlate to your choice: ");
@@ -52,7 +58,17 @@ public class DictionaryCommandline extends DictionaryManagement {
                     keyboard.nextLine();
                     break;
                 case 2:
+                    this.dictionaryLookup(keyboard);
+                    System.out.print("Press any key to continue... ");
+                    keyboard.nextLine();
+                    break;
+                case 3:
                     this.insertFromCommandline(keyboard);
+                    System.out.print("Press any key to continue... ");
+                    keyboard.nextLine();
+                    break;
+                case 4:
+                    this.insertFromFile(keyboard);
                     System.out.print("Press any key to continue... ");
                     keyboard.nextLine();
                     break;
