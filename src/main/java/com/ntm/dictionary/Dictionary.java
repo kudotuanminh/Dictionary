@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /** Held logics for a Dictionary. */
 public class Dictionary {
     /** @param words The ArrayList to stores the word list of the Dictionary. */
-    private ArrayList<Word> words = new ArrayList<Word>();
+    public static ArrayList<Word> words = new ArrayList<Word>();
 
     /**
      * Adds a word to the Dictionary's data.

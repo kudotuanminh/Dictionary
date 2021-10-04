@@ -73,9 +73,9 @@ public class DictionaryCommandline extends DictionaryManagement {
                     keyboard.nextLine();
                     break;
                 case 0:
-                    System.out.print("\nGoodbye!");
+                    System.out.print("\nGoodbye!Please Press any key to Export to File");
                     keyboard.nextLine();
-                    System.exit(0);
+                    //System.exit(0);
                     break;
                 default:
                     System.out.printf(
