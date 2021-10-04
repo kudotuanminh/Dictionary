@@ -1,9 +1,10 @@
 package com.ntm.dictionary;
 import java.io.FileWriter;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class DictionaryCommandline extends DictionaryManagement {
-    // in ra cac words trong yeu cau 1
+
     public void showAllWords() {
         System.out.print("\033\143");
         System.out.println(" No.\t| English\t| Vietnamese");
@@ -18,13 +19,13 @@ public class DictionaryCommandline extends DictionaryManagement {
     }
 
     public void WordSearcher(String s) {
-        //System.out.println("hello");
+        String lower_case = s.toLowerCase();
         int dem = 0 , stt = 0;
         for (int i = 0; i < this.getSize(); i++) {
             Word currentWord = this.getWord(i);
             dem = 0 ;
-            for (int j = 0; j < s.length(); j++)   if (s.charAt(j) == (currentWord.getWordTarget().charAt(j)))    ++dem;
-            if (dem != s.length())   continue;
+            for (int j = 0; j < lower_case.length(); j++)   if (lower_case.charAt(j) == (currentWord.getWordTarget().charAt(j)))    ++dem;
+            if (dem != lower_case.length())   continue;
             else {
                 ++stt;
                 System.out.printf("%d\t| %s\t| %s\n", stt ,currentWord.getWordTarget(), currentWord.getWordExplain());
@@ -32,7 +33,6 @@ public class DictionaryCommandline extends DictionaryManagement {
         }
     }
 
-    //tu dien so khai
     public void dictionaryBasic() {
         Scanner keyboard = new Scanner(System.in);
 
@@ -99,8 +99,7 @@ public class DictionaryCommandline extends DictionaryManagement {
     public static void main(String[] args) {
         DictionaryCommandline dict = new DictionaryCommandline();
         dict.dictionaryBasic();
-
-
+        
         //Export to File dictionaries.txt
         // source:https://stackoverflow.com/questions/6548157/how-to-write-an-arraylist-of-strings-into-a-text-file
         try {
