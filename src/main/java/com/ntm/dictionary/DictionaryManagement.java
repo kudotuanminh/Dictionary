@@ -1,10 +1,15 @@
 package com.ntm.dictionary;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.Scanner;
-import java.io.IOException;
 
+import java.io.*;
+import java.util.Scanner;
+
+/** Held logics to manage the Dictionary. */
 public class DictionaryManagement extends Dictionary {
+    /**
+     * Function to start entering words from commandline to the Dictionary's data.
+     *
+     * @param keyboard The current Scanner that are getting data from keyboard.
+     */
     public void insertFromCommandline(Scanner keyboard) {
         System.out.print("\033\143");
         System.out.print("Enters number of words to input: ");
@@ -36,6 +41,12 @@ public class DictionaryManagement extends Dictionary {
         System.out.print(" from Commandline to the database.\n\n");
     }
 
+    /**
+     * Function to start entering words from 'dictionaries.txt' to the Dictionary's
+     * data.
+     *
+     * @param keyboard The current Scanner that are getting data from keyboard.
+     */
     public void insertFromFile(Scanner keyboard) {
         try {
             BufferedReader fileReader = new BufferedReader(new FileReader("./resources/dictionaries.txt"));
@@ -67,10 +78,41 @@ public class DictionaryManagement extends Dictionary {
         }
     }
 
-    public String search_tester(){
-        Scanner input = new Scanner(System.in);
+    /**
+     * Function to lookup word in the Dictionary's data.
+     *
+     * @param keyboard The current Scanner that are getting data from keyboard.
+     */
+    public void dictionaryLookup(Scanner keyboard) {
+        System.out.print("\033\143");
+        System.out.print("Word to search: ");
+        String s = keyboard.nextLine();
 
-        String wordfind = input.nextLine();
-        return wordfind;
+        String leftAlignFormat = "| %-4d | %-15s | %-15s |%n";
+
+        System.out.format("+------+-----------------+-----------------+%n");
+        System.out.format("| No.  | English         | Vietnamese      |%n");
+        System.out.format("+------+-----------------+-----------------+%n");
+
+        int dem;
+        int stt = 0;
+        for (int i = 0; i < this.getSize(); i++) {
+            Word currentWord = this.getWord(i);
+            dem = 0;
+            for (int j = 0; j < s.length(); j++) {
+                if (Character.toLowerCase(s.charAt(j)) == Character
+                        .toLowerCase(currentWord.getWordTarget().charAt(j))) {
+                    dem++;
+                }
+            }
+            if (dem != s.length()) {
+                continue;
+            } else {
+                stt++;
+                System.out.format(leftAlignFormat, stt, currentWord.getWordTarget(), currentWord.getWordExplain());
+            }
+        }
+
+        System.out.format("+------+-----------------+-----------------+%n");
     }
 }

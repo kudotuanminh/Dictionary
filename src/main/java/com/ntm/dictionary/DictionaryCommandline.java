@@ -1,49 +1,43 @@
 package com.ntm.dictionary;
-import java.io.FileWriter;
-import java.util.Locale;
+
 import java.util.Scanner;
 
+/** Held logics to create a Dictionary in the commandline */
 public class DictionaryCommandline extends DictionaryManagement {
-
+    /** Function to print all words that are in the Dictionary's data. */
     public void showAllWords() {
         System.out.print("\033\143");
-        System.out.println(" No.\t| English\t| Vietnamese");
-        System.out.println("-----------------------------------------------");
+
+        String leftAlignFormat = "| %-4d | %-15s | %-15s |%n";
+
+        System.out.format("+------+-----------------+-----------------+%n");
+        System.out.format("| No.  | English         | Vietnamese      |%n");
+        System.out.format("+------+-----------------+-----------------+%n");
 
         for (int i = 0; i < this.getSize(); i++) {
             Word currentWord = this.getWord(i);
-            System.out.printf(" %d\t| %s\t\t| %s\n", i + 1, currentWord.getWordTarget(), currentWord.getWordExplain());
+            System.out.format(leftAlignFormat, i + 1, currentWord.getWordTarget(), currentWord.getWordExplain());
         }
 
-        System.out.println("\n");
+        System.out.format("+------+-----------------+-----------------+%n");
     }
 
-    public void WordSearcher(String s) {
-        String lower_case = s.toLowerCase();
-        int dem = 0 , stt = 0;
-        for (int i = 0; i < this.getSize(); i++) {
-            Word currentWord = this.getWord(i);
-            dem = 0 ;
-            for (int j = 0; j < lower_case.length(); j++)   if (lower_case.charAt(j) == (currentWord.getWordTarget().charAt(j)))    ++dem;
-            if (dem != lower_case.length())   continue;
-            else {
-                ++stt;
-                System.out.printf("%d\t| %s\t| %s\n", stt ,currentWord.getWordTarget(), currentWord.getWordExplain());
-            }
-        }
-    }
-
-    public void dictionaryBasic() {
+    /**
+     * Advanced version of the commandline dictionary.
+     *
+     * @param keyboard The current Scanner that are getting data from keyboard.
+     */
+    public void dictionaryAdvanced() {
         Scanner keyboard = new Scanner(System.in);
 
         int choice;
         do {
             System.out.print("\033\143");
-            System.out.println("\t\tThis is a simple dictionary\n");
+            System.out.println("\t\tThis is a simple dictionary, advanced version.\n");
             System.out.println("1. View all words currently in the database.");
-            System.out.println("2. Input words from Commandline.");
-            System.out.println("3. Search in Kudo.");
-            System.out.println("4. Insert From File .");
+            System.out.println("2. Search for words in the database.");
+            System.out.println("3. Input words from Commandline.");
+            System.out.println("4. Input words from '/resources/dictionaries.txt'.");
             System.out.println("0. Quit application.");
 
             System.out.print("\nEnters a number (1, 2,...) correlate to your choice: ");
@@ -64,16 +58,13 @@ public class DictionaryCommandline extends DictionaryManagement {
                     keyboard.nextLine();
                     break;
                 case 2:
-                    this.insertFromCommandline(keyboard);
+                    this.dictionaryLookup(keyboard);
                     System.out.print("Press any key to continue... ");
                     keyboard.nextLine();
                     break;
                 case 3:
-                    System.out.println("Word you need to find :" );
-                    String finds = this.search_tester();
-                    System.out.println("--------suggested for you-------:" );
-                    this.WordSearcher(finds);
-                    System.out.println("-----------------------------------------------");
+                    this.insertFromCommandline(keyboard);
+                    System.out.print("Press any key to continue... ");
                     keyboard.nextLine();
                     break;
                 case 4:
@@ -82,9 +73,9 @@ public class DictionaryCommandline extends DictionaryManagement {
                     keyboard.nextLine();
                     break;
                 case 0:
-                    System.out.print("\nGoodbye! Please Press any key to export to File");
+                    System.out.print("\nGoodbye!");
                     keyboard.nextLine();
-                    //System.exit(0);
+                    System.exit(0);
                     break;
                 default:
                     System.out.printf(
@@ -93,25 +84,7 @@ public class DictionaryCommandline extends DictionaryManagement {
                     break;
             }
         } while (choice != 0);
-        keyboard.close();
-    }
 
-    public static void main(String[] args) {
-        DictionaryCommandline dict = new DictionaryCommandline();
-        dict.dictionaryBasic();
-        
-        //Export to File dictionaries.txt
-        // source:https://stackoverflow.com/questions/6548157/how-to-write-an-arraylist-of-strings-into-a-text-file
-        try {
-            FileWriter fw = new FileWriter("C:\\Users\\Vo Dinh Huy\\OneDrive\\Documents\\GitHub\\Dictionary\\resources\\dictionaries.txt");
-            for (int i = 0; i < Dictionary.words.size(); i++) {
-                fw.write(words.get(i).getWordTarget() + "\n");
-                fw.write(words.get(i).getWordExplain() + "\n");
-            }
-            fw.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        System.out.println("Success Export to File");
+        keyboard.close();
     }
 }
