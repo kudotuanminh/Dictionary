@@ -4,11 +4,17 @@ This is a group project for INT2204 2 class - Object Oriented Programming
 
 ## Team Members
 
+| Name                | Student ID |
+| ------------------- | ---------- |
+| Ngo Tuan Minh       | 20020059   |
+| Tran Ngoc Truc Linh | 20020113   |
+| Vo Dinh Huy         | 20020198   |
+
 # Dependencies
 
 ## Software
 
-I use [_VSCode_](https://code.visualstudio.com/download) on Windows, compiled and packaged with [_Maven 3.8.2_](https://maven.apache.org/download.cgi "	apache-maven-3.8.2").
+This project is compiled and packaged with [_Maven 3.8.2_](https://maven.apache.org/download.cgi "	apache-maven-3.8.2").
 
 ## Compile and Run
 
