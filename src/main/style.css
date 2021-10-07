@@ -1,0 +1,29 @@
+.hover-border:hover {
+  -fx-border-color: #ff9aa2;
+  -fx-border-width: 0px 0px 0px 2px;
+  -fx-background-color: #e2e2e2;
+  -fx-cursor: hand;
+}
+
+.hover-border:selected:focused,
+.hover-border:selected {
+  -fx-background-color: #ff9aa2;
+  -fx-text-fill: white;
+}
+
+.list-cell:filled:selected:focused,
+.list-cell:filled:selected {
+  -fx-background-color: #ff9aa2;
+  -fx-text-fill: white;
+}
+
+.list-cell {
+  -fx-font-size: 15;
+}
+
+.list-cell:filled:hover {
+  -fx-border-color: #ff9aa2;
+  -fx-border-width: 0px 0px 0px 2px;
+  -fx-background-color: #e2e2e2;
+  -fx-cursor: hand;
+}

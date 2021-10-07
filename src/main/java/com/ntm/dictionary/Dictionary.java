@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /** Held logics for a Dictionary. */
 public class Dictionary {
     /** @param words The ArrayList to stores the word list of the Dictionary. */
-    private ArrayList<Word> words = new ArrayList<Word>();
+    protected ArrayList<Word> words = new ArrayList<Word>();
 
     /**
      * Adds a word to the Dictionary's data.
@@ -34,5 +34,20 @@ public class Dictionary {
      */
     public int getSize() {
         return words.size();
+    }
+
+    /**
+     * Getter function to get the size of the Dictionary's data.
+     * 
+     * @param wordTarget The wordTarget to search for.
+     * @return Meaning of given wordTarget.
+     */
+    public String getWordExplain(String wordTarget) {
+        for (int i = 0; i < words.size(); i++) {
+            if (wordTarget.equals(getWord(i).getWordTarget())) {
+                return getWord(i).getWordExplain();
+            }
+        }
+        return null;
     }
 }
