@@ -115,4 +115,63 @@ public class DictionaryManagement extends Dictionary {
 
         System.out.format("+------+-----------------+-----------------+%n");
     }
+
+    /**
+     * Function to edit the words that have existed in data already.
+     */
+    public void editWordInData(Scanner keyboard) {
+        System.out.print("\033\143");
+        System.out.print("Enters number of words to edit: ");
+
+        String integerPattern = "[+]?\\d+$";
+        while (!keyboard.hasNext(integerPattern)) {
+            String x = keyboard.nextLine();
+            System.out.printf("'%s' is an invalid input! Press any key and enters a single POSITIVE integer! ", x);
+            keyboard.nextLine();
+
+            System.out.print("\033\143");
+            System.out.print("Enters number of words to input: ");
+        }
+        int n = keyboard.nextInt();
+        keyboard.nextLine();
+
+        String leftAlignFormat = "| %-4d | %-15s | %-15s |%n";
+
+
+        for (int i = 0; i < n; i++) {
+            boolean check = false;
+                System.out.print("Word to edit: ");
+                String s = keyboard.nextLine();
+                for (int j = 0; j < this.getSize(); j++) {
+                    Word currentWord = this.getWord(j);
+                    //System.out.println(currentWord.getWordTarget() + " " + s);
+                    if (s.equals(currentWord.getWordTarget())) {
+                        System.out.println("1. Edit the word.");
+                        System.out.println("2. Edit the meaning of word in the database.");
+                        System.out.print("\nEnters a number (1, 2) correlate to your choice: ");
+                        int choice = keyboard.nextInt();
+                        keyboard.nextLine();
+                        System.out.println(choice);
+                        switch (choice) {
+                            case 1:
+                                System.out.printf("\nEnters word target: ");
+                                String target = keyboard.nextLine();
+                                currentWord.setWordTarget(target);
+                                break;
+                            case 2:
+                                System.out.printf("Enters word explaination: ");
+                                String explain = keyboard.nextLine();
+                                currentWord.setWordExplain(explain);
+                                break;
+                            default:
+                                System.out.printf(
+                                        "Invalid menu option! Press any key and enters a single POSITIVE integer! ");
+                                keyboard.nextLine();
+                                break;
+                        }
+                        break;
+                    }
+                }
+        }
+    }
 }
