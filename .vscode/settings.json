@@ -1,5 +1,8 @@
 {
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
-    "java.format.settings.url": ".vscode/eclipse-java-google-style.xml"
+    "java.format.settings.url": ".vscode/eclipse-java-google-style.xml",
+    "code-runner.executorMap":{
+        "java": "cd $workspaceRoot && mvn clean javafx:run",
+    }
 }

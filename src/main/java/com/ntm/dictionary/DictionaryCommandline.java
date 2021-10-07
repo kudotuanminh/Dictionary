@@ -68,7 +68,7 @@ public class DictionaryCommandline extends DictionaryManagement {
                     keyboard.nextLine();
                     break;
                 case 4:
-                    this.insertFromFile(keyboard);
+                    // this.insertFromFile(keyboard);
                     System.out.print("Press any key to continue... ");
                     keyboard.nextLine();
                     break;

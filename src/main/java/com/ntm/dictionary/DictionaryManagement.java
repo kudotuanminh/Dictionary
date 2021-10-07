@@ -47,14 +47,19 @@ public class DictionaryManagement extends Dictionary {
      *
      * @param keyboard The current Scanner that are getting data from keyboard.
      */
-    public void insertFromFile(Scanner keyboard) {
+    public void insertFromFile(Scanner keyboard, String args) {
         try {
-            BufferedReader fileReader = new BufferedReader(new FileReader("./resources/dictionaries.txt"));
+            FileInputStream file = new FileInputStream("./resources/dictionaries.txt");
+            InputStreamReader inputStream = new InputStreamReader(file, "UTF-8");
+            BufferedReader fileReader = new BufferedReader(inputStream);
 
-            System.out.print("\033\143");
-            System.out.print(
-                    "Please make sure to verify integrity of 'dictionaries.txt' before proceeding.\nPress any key to continue... ");
-            keyboard.nextLine();
+            if (args == "cmdline") {
+                System.out.print("\033\143");
+                System.out.print(
+                        "Please make sure to verify integrity of 'dictionaries.txt' before proceeding.\nPress any key to continue... ");
+                keyboard.nextLine();
+            }
+
             int n = 0;
             String line;
             while ((line = fileReader.readLine()) != null) {
@@ -67,9 +72,11 @@ public class DictionaryManagement extends Dictionary {
                 n++;
             }
 
-            System.out.print("\nFinished importing ");
-            System.out.printf((n > 1 ? "%d words" : "%d word"), n);
-            System.out.print(" from 'dictionaries.txt' to the database.\n\n");
+            if (args == "cmdline") {
+                System.out.print("\nFinished importing ");
+                System.out.printf((n > 1 ? "%d words" : "%d word"), n);
+                System.out.print(" from 'dictionaries.txt' to the database.\n\n");
+            }
 
             fileReader.close();
         } catch (IOException e) {
