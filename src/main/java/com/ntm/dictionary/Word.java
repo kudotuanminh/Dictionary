@@ -4,7 +4,7 @@ package com.ntm.dictionary;
 public class Word {
     /** @param wordTarget The current word itself. */
     private String wordTarget = "";
-    /** @param wordExplain The explanation of the current word. */
+    /** @param wordExplain The meaning of the current word. */
     private String wordExplain = "";
 
     /**
