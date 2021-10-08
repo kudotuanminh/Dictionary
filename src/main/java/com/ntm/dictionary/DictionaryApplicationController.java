@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 
-/** Held logics to control function used in FXML */
+/** Held logics to control functions used in FXML */
 public class DictionaryApplicationController extends DictionaryManagement {
     private Scanner keyboard;
     @FXML
