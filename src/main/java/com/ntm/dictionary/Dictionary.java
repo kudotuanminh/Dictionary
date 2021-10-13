@@ -50,4 +50,8 @@ public class Dictionary {
         }
         return null;
     }
+
+    public void removeWord(int index) {
+        this.words.remove(index);
+    }
 }
