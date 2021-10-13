@@ -24,8 +24,6 @@ public class DictionaryCommandline extends DictionaryManagement {
 
     /**
      * Advanced version of the commandline dictionary.
-     *
-     * @param keyboard The current Scanner that are getting data from keyboard.
      */
     public void dictionaryAdvanced() {
         Scanner keyboard = new Scanner(System.in);
@@ -58,7 +56,11 @@ public class DictionaryCommandline extends DictionaryManagement {
                     keyboard.nextLine();
                     break;
                 case 2:
-                    this.dictionaryLookup(keyboard);
+                    System.out.print("\033\143");
+                    System.out.print("Word to search: ");
+                    String s = keyboard.nextLine();
+
+                    this.dictionaryLookup(s, "cmdline");
                     System.out.print("Press any key to continue... ");
                     keyboard.nextLine();
                     break;

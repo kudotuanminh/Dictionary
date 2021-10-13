@@ -1,6 +1,7 @@
 package com.ntm.dictionary;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /** Held logics to manage the Dictionary. */
@@ -90,38 +91,45 @@ public class DictionaryManagement extends Dictionary {
     /**
      * Function to lookup word in the Dictionary's data.
      *
-     * @param keyboard The current Scanner that are getting data from keyboard.
+     * @param input The string to search in data.
+     * @param args  Arguement to specify whether if program is running in cmdline
+     *              mode or GUI mode.
      */
-    public void dictionaryLookup(Scanner keyboard) {
-        System.out.print("\033\143");
-        System.out.print("Word to search: ");
-        String s = keyboard.nextLine();
-
+    public ArrayList<Word> dictionaryLookup(String input, String args) {
         String leftAlignFormat = "| %-4d | %-15s | %-15s |%n";
+        if (args.equals("cmdline")) {
+            System.out.format("+------+-----------------+-----------------+%n");
+            System.out.format("| No.  | English         | Vietnamese      |%n");
+            System.out.format("+------+-----------------+-----------------+%n");
+        }
 
-        System.out.format("+------+-----------------+-----------------+%n");
-        System.out.format("| No.  | English         | Vietnamese      |%n");
-        System.out.format("+------+-----------------+-----------------+%n");
+        ArrayList<Word> wordsFound = new ArrayList<Word>();
 
         int dem;
         int stt = 0;
         for (int i = 0; i < this.getSize(); i++) {
             Word currentWord = this.getWord(i);
             dem = 0;
-            for (int j = 0; j < s.length(); j++) {
-                if (Character.toLowerCase(s.charAt(j)) == Character
+            for (int j = 0; j < input.length(); j++) {
+                if (Character.toLowerCase(input.charAt(j)) == Character
                         .toLowerCase(currentWord.getWordTarget().charAt(j))) {
                     dem++;
                 }
             }
-            if (dem != s.length()) {
+            if (dem != input.length()) {
                 continue;
             } else {
                 stt++;
-                System.out.format(leftAlignFormat, stt, currentWord.getWordTarget(), currentWord.getWordExplain());
+                if (args.equals("cmdline")) {
+                    System.out.format(leftAlignFormat, stt, currentWord.getWordTarget(), currentWord.getWordExplain());
+                }
+                wordsFound.add(currentWord);
             }
         }
 
-        System.out.format("+------+-----------------+-----------------+%n");
+        if (args.equals("cmdline")) {
+            System.out.format("+------+-----------------+-----------------+%n");
+        }
+        return wordsFound;
     }
 }

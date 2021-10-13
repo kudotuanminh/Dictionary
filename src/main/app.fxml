@@ -1,171 +1,220 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ntm.dictionary.DictionaryApplicationController">
-    <top>
-        <HBox style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
-            <children>
-                <HBox alignment="CENTER" maxWidth="-Infinity" prefWidth="166.0" style="-fx-background-color: #ff9aa2;">
-                    <children>
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ntm.dictionary.DictionaryApplicationController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@style.css">
+         <top>
+            <HBox style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" maxWidth="-Infinity" prefWidth="166.0" style="-fx-background-color: #ff9aa2;">
+                     <children>
                         <FontIcon iconColor="WHITE" iconLiteral="fas-book" iconSize="40" styleClass="cursor_hand">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></FontIcon>
-
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Verdana; -fx-font-weight: bold;" text="Dictionary">
-                            <HBox.margin>
-                                <Insets left="20.0" />
-                            </HBox.margin>
-                        </Text>
-                    </children>
-                    <HBox.margin>
-                        <Insets />
-                    </HBox.margin>
-                    <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                    </padding>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-                    <children>
-                        <HBox alignment="CENTER_RIGHT">
-                            <children>
-                                <TextField fx:id="wordSearch" promptText="Type a word..." style="-fx-background-color: transparent; -fx-prompt-text-fill: #485460;">
-                                    <HBox.margin>
-                                        <Insets left="20.0" right="10.0" />
-                                    </HBox.margin>
-                                </TextField>
-                                <FontIcon fill="#485460" iconLiteral="fas-search" iconSize="15" styleClass="cursor_hand">
                            <cursor>
                               <Cursor fx:constant="HAND" />
-                           </cursor></FontIcon>
-
-                            </children>
+                           </cursor>
+                        </FontIcon>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Verdana; -fx-font-weight: bold;" text="Dictionary">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <TextField fx:id="wordSearch" onKeyReleased="#onKeyReleasedSearch" promptText="Type a word..." style="-fx-background-color: transparent; -fx-prompt-text-fill: #485460;">
+                                 <HBox.margin>
+                                    <Insets left="20.0" right="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <FontIcon fill="#485460" iconLiteral="fas-search" iconSize="15" styleClass="cursor_hand">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </FontIcon>
+                              <HBox alignment="CENTER_RIGHT">
+                                 <children>
+                                    <JFXButton styleClass="button-raised" text="Add">
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                    <JFXButton styleClass="button-raised" text="Remove">
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </HBox>
+                           </children>
                         </HBox>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
-                    <children>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                     <children>
                         <FontIcon iconLiteral="far-bell" iconSize="20" styleClass="cursor_hand">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></FontIcon>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </FontIcon>
                         <ImageView fitWidth="32.0" pickOnBounds="true" preserveRatio="true" styleClass="cursor_hand">
-                            <image>
-                                <Image url="@../images/default.png" />
-                            </image>
-                            <HBox.margin>
-                                <Insets left="20.0" right="20.0" />
-                            </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                           <image>
+                              <Image url="@../images/default.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bolder;" text="Tuan Minh Ngo">
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
                         </Text>
                         <FontIcon iconLiteral="fas-angle-down" iconSize="15" styleClass="cursor_hand">
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </FontIcon>
-                    </children>
-                </HBox>
-            </children>
-        </HBox>
-    </top>
-   <left>
-      <VBox maxWidth="-Infinity" prefWidth="166.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
-         <children>
-            <VBox prefHeight="360.0">
-               <children>
-                  <HBox alignment="CENTER_LEFT" styleClass="hover-border">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets top="40.0" />
-                     </VBox.margin>
-                     <children>
-                        <FontIcon iconColor="#485460" iconLiteral="fab-discord" iconSize="25" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-fill: #485460;" text="Text">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Text>
                      </children>
                   </HBox>
                </children>
-            </VBox>
-            <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
+            </HBox>
+         </top>
+         <left>
+            <VBox maxWidth="-Infinity" prefWidth="166.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER_LEFT" styleClass="hover-border">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
+                  <VBox prefHeight="360.0">
                      <children>
-                        <FontIcon iconColor="#485460" iconLiteral="fas-cog" iconSize="25" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-fill: #485460;" text="Settings">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Text>
+                        <HBox fx:id="dictionaryTab" alignment="CENTER_LEFT" styleClass="hover-border-selected">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                           <children>
+                              <FontIcon iconColor="#485460" iconLiteral="fas-book-open" iconSize="25" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-fill: #485460;" text="Dictionary">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" styleClass="hover-border">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
                      <children>
-                        <FontIcon iconColor="#485460" iconLiteral="fas-user" iconSize="25" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-fill: #485460;" text="Contact Support">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Text>
+                        <HBox alignment="CENTER_LEFT" styleClass="hover-border">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <FontIcon iconColor="#485460" iconLiteral="fas-cog" iconSize="25" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-fill: #485460;" text="Settings">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="contactSupport" alignment="CENTER_LEFT" onMouseClicked="#viewCredit" styleClass="hover-border">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <FontIcon iconColor="#485460" iconLiteral="fas-user" iconSize="25">
+                                 <HBox.margin>
+                                    <Insets left="1.0" right="2.0" />
+                                 </HBox.margin>
+                              </FontIcon>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-fill: #485460;" text="About">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
-         </children>
-      </VBox>
-   </left>
-   <center>
-      <HBox BorderPane.alignment="CENTER">
-         <children>
-            <ScrollPane prefWidth="300.0">
-               <content>
-                  <ListView fx:id="wordViewList" onMouseClicked="#displayThisWord" prefHeight="620.0" prefWidth="285.0" style="-fx-font-size: 15;" styleClass="list-cell" />
-               </content>
-            </ScrollPane>
-            <ScrollPane prefWidth="534.0">
-               <content>
-                  <Label fx:id="thisWordExplain" maxWidth="533.0" wrapText="true">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-               </content>
-            </ScrollPane>
-         </children>
-      </HBox>
-   </center>
-</BorderPane>
+         </left>
+         <center>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <ScrollPane prefWidth="300.0">
+                     <content>
+                        <ListView fx:id="wordViewList" onMouseClicked="#displayThisWord" prefHeight="620.0" prefWidth="285.0" style="-fx-font-size: 15;" styleClass="list-cell" />
+                     </content>
+                  </ScrollPane>
+                  <VBox prefHeight="620.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <FontIcon iconLiteral="fas-volume-up" iconSize="30">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </FontIcon>
+                              <Label alignment="CENTER_RIGHT" text="/prəˌnʌnsɪˈeɪʃən/" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <TextArea fx:id="thisWordExplain" editable="false" prefHeight="569.0" prefWidth="534.0" styleClass="text-area" text="Default&#10;Multiline" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextArea>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>
