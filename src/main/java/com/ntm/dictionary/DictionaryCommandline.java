@@ -38,6 +38,8 @@ public class DictionaryCommandline extends DictionaryManagement {
             System.out.println("2. Search for words in the database.");
             System.out.println("3. Input words from Commandline.");
             System.out.println("4. Input words from '/resources/dictionaries.txt'.");
+            System.out.println("5. Edit word currently in database.");
+            System.out.println("6. Export words to '/resources/export.txt'.");
             System.out.println("0. Quit application.");
 
             System.out.print("\nEnters a number (1, 2,...) correlate to your choice: ");
@@ -69,6 +71,17 @@ public class DictionaryCommandline extends DictionaryManagement {
                     break;
                 case 4:
                     this.insertFromFile(keyboard);
+                    System.out.print("Press any key to continue... ");
+                    keyboard.nextLine();
+                    break;
+                case 5:
+                    this.showAllWords();
+                    this.editWordInData(keyboard);
+                    System.out.print("Press any key to continue... ");
+                    keyboard.nextLine();
+                    break;
+                case 6:
+                    this.exportToFile();
                     System.out.print("Press any key to continue... ");
                     keyboard.nextLine();
                     break;
