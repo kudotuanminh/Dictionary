@@ -1,2 +1,14 @@
-study
-hoc bai
+cat
+Con mèo
+dog
+Con chó
+horse
+Con ngựa
+transport
+Vận chuyển
+translate
+Phiên dịch
+transform
+Biến đổi
+transit
+Quá cảnh
