@@ -210,9 +210,16 @@ public class DictionaryManagement extends Dictionary {
         } while (!(choice == 1 || choice == 2 || choice == 3));
     }
 
-    /** Function to export data to 'export.txt'. */
-    public void exportToFile() {
-        System.out.print("\033\143");
+    /**
+     * Function to export data to 'export.txt'.
+     *
+     * @param args Arguement to specify whether if program is running in cmdline
+     *             mode or GUI mode.
+     */
+    public void exportToFile(String args) {
+        if (args.equals("cmdline")) {
+            System.out.print("\033\143");
+        }
 
         try {
             FileWriter fw = new FileWriter("./resources/export.txt");
@@ -225,9 +232,11 @@ public class DictionaryManagement extends Dictionary {
             System.out.println(e);
         }
 
-        int n = words.size();
-        System.out.print("Finished exporting ");
-        System.out.printf((n > 1 ? "%d words" : "%d word"), n);
-        System.out.print(" from database to 'export.txt'.\n\n");
+        if (args.equals("cmdline")) {
+            int n = words.size();
+            System.out.print("Finished exporting ");
+            System.out.printf((n > 1 ? "%d words" : "%d word"), n);
+            System.out.print(" from database to 'export.txt'.\n\n");
+        }
     }
 }

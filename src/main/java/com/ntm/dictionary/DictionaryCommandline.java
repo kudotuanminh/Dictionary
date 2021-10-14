@@ -83,7 +83,7 @@ public class DictionaryCommandline extends DictionaryManagement {
                     keyboard.nextLine();
                     break;
                 case 6:
-                    this.exportToFile();
+                    this.exportToFile("cmdline");
                     System.out.print("Press any key to continue... ");
                     keyboard.nextLine();
                     break;

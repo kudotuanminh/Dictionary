@@ -75,7 +75,7 @@
                                           <Insets left="10.0" right="10.0" />
                                        </HBox.margin>
                                     </JFXButton>
-                                    <JFXButton layoutX="84.0" layoutY="35.0" styleClass="button-raised" text="Export">
+                                    <JFXButton layoutX="84.0" layoutY="35.0" onMouseClicked="#exportToFileDialog" styleClass="button-raised" text="Export">
                                        <HBox.margin>
                                           <Insets left="10.0" right="10.0" />
                                        </HBox.margin>

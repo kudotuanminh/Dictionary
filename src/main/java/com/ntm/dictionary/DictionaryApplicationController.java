@@ -181,6 +181,17 @@ public class DictionaryApplicationController extends DictionaryManagement {
         }
     }
 
+    /** Function to export data to 'export.txt'. */
+    @FXML
+    private void exportToFileDialog(MouseEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        this.exportToFile("GUI");
+        int n = words.size();
+        String content = "Finished exporting " + n + (n > 1 ? " words" : " word") + " from database to 'export.txt'.";
+        alert.setContentText(content);
+        alert.show();
+    }
+
     /** Function to play currently selected word by TTS. */
     @FXML
     private void playVoice(MouseEvent event) {
