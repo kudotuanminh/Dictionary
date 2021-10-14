@@ -14,26 +14,21 @@ This is a group project for INT2204 2 class - Object Oriented Programming
 
 ## Software
 
-This project is compiled and packaged with [_Maven 3.8.2_](https://maven.apache.org/download.cgi "	apache-maven-3.8.2").
+This project is compiled and packaged with [_Maven 3.8.2_](https://maven.apache.org/download.cgi "apache-maven-3.8.2"). Graphics was designed by [_Scene Builder 17.0.0_](https://gluonhq.com/products/scene-builder/#download).
 
-## Compile and Run
+## External Libraries
 
-### Compile
+- OpenJFX (JavaFX) v17.0.0.1 - Integrated as Maven Dependencies.
+- ikonli v12.2.0 - Integrated as Maven Dependencies.
+- JFoenix v9.0.10 - Integrated as Maven Dependencies.
+- FreeTTS v1.2.2 - Integrated as Maven Dependencies.
 
-To compile, run:
+# Compile and Run
 
-```
-mvn package
-```
-
-in _cmd_. _Maven_ will compiles and packages to `Dictionary-(program ver).jar` in `(root directory)/target/` path.
-
-### Run
-
-To execute either package you just compile, or one of the pre-compiled release in [Releases](https://github.com/kudotuanminh/Dictionary/releases), run:
+For GUI version, just run:
 
 ```
-java -jar Dictionary-(program ver).jar
+mvn clean javafx:run
 ```
 
-in _cmd_.
+in _cmd_ from source code.

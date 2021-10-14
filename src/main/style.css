@@ -1,0 +1,56 @@
+.hover-border:hover {
+  -fx-border-color: #ff9aa2;
+  -fx-border-width: 0px 0px 0px 2px;
+  -fx-background-color: #e2e2e2;
+  -fx-cursor: hand;
+}
+
+.hover-border-selected {
+  -fx-background-color: #ffd2d9;
+  -fx-cursor: hand;
+}
+
+.list-cell:filled:selected:focused,
+.list-cell:filled:selected {
+  -fx-background-color: #ff9aa2;
+  -fx-text-fill: #ffffff;
+}
+
+.list-cell {
+  -fx-font-size: 15;
+  -fx-background-color: transparent;
+  -fx-background-insets: 0px;
+}
+
+.list-cell:filled:hover {
+  -fx-border-color: #ff9aa2;
+  -fx-border-width: 0px 0px 0px 2px;
+  -fx-background-color: #e2e2e2;
+  -fx-cursor: hand;
+}
+
+.text-area {
+  -fx-background-color: transparent;
+  -fx-background-insets: 0px;
+  -fx-highlight-fill: #ff9aa2;
+}
+
+.text-area .scroll-pane {
+  -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport {
+  -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .content {
+  -fx-background-color: transparent;
+}
+
+.button-raised {
+  -fx-font-size: 14px;
+  -jfx-button-type: FLAT;
+  -fx-background-color: #ffd2d9;
+  -fx-text-fill: #485460;
+  -fx-cursor: hand;
+}

@@ -1,9 +1,10 @@
 package com.ntm.dictionary;
 
+import javafx.application.Application;
+
 /** Main class */
-public class Main {
+public class Main extends DictionaryApplication {
     public static void main(String[] args) {
-        DictionaryCommandline dict = new DictionaryCommandline();
-        dict.dictionaryAdvanced();
+        Application.launch(args);
     }
 }
