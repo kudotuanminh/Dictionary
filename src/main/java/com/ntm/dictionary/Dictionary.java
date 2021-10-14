@@ -37,20 +37,36 @@ public class Dictionary {
     }
 
     /**
-     * Getter function to get the size of the Dictionary's data.
-     * 
+     * Getter function to get the position in data of given wordTarget.
+     *
+     * @param wordTarget The wordTarget to search for.
+     * @return Position of given wordTarget.
+     */
+    public int getIndex(String wordTarget) {
+        for (int i = 0; i < words.size(); i++) {
+            if (wordTarget.equals(this.getWord(i).getWordTarget())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Getter function to get the explaination of given wordTarget.
+     *
      * @param wordTarget The wordTarget to search for.
      * @return Meaning of given wordTarget.
      */
     public String getWordExplain(String wordTarget) {
-        for (int i = 0; i < words.size(); i++) {
-            if (wordTarget.equals(getWord(i).getWordTarget())) {
-                return getWord(i).getWordExplain();
-            }
-        }
-        return null;
+        int wordPos = this.getIndex(wordTarget);
+        return ((wordPos == -1) ? null : this.getWord(wordPos).getWordExplain());
     }
 
+    /**
+     * Function to remove the word at given index position.
+     *
+     * @param index Position of word to remove.
+     */
     public void removeWord(int index) {
         this.words.remove(index);
     }
