@@ -30,6 +30,11 @@
             <artifactId>javafx-fxml</artifactId>
             <version>17.0.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>17.0.0.1</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.kordamp.ikonli -->
         <dependency>
             <groupId>org.kordamp.ikonli</groupId>

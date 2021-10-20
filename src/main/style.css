@@ -54,3 +54,11 @@
   -fx-text-fill: #485460;
   -fx-cursor: hand;
 }
+
+.ggtrans-text-area {
+  -fx-font-size: 20;
+  -fx-background-color: transparent;
+  -fx-border-color: #ff9aa2;
+  -fx-border-width: 2px;
+  -fx-border-radius: 10;
+}

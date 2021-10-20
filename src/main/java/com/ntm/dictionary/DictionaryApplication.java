@@ -3,11 +3,11 @@ package com.ntm.dictionary;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.Parent;
 import java.io.*;
 import java.net.URL;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 
 /** Helds logics to load JavaFX's GUI by FXML. */
 public class DictionaryApplication extends Application {
