@@ -20,25 +20,19 @@ This project is compiled and packaged with [_Maven 3.8.2_](https://maven.apache.
 
 - OpenJFX (JavaFX) v17.0.0.1 - Integrated as Maven Dependencies.
 - ikonli v12.2.0 - Integrated as Maven Dependencies.
+- JFoenix v9.0.10 - Integrated as Maven Dependencies.
+- FreeTTS v1.2.2 - Integrated as Maven Dependencies.
 
 # Compile and Run
 
-## Compile
-
-To compile, run:
+For GUI version, just run:
 
 ```
-mvn package
+mvn clean javafx:run
 ```
 
-in _cmd_. _Maven_ will compiles and packages to `Dictionary-(program ver).jar` in `(root directory)/target/` path.
+in _cmd_ from source code.
 
-## Run
+# Credit
 
-To execute either package you just compile, or one of the pre-compiled release in [Releases](https://github.com/kudotuanminh/Dictionary/releases), run:
-
-```
-java -jar Dictionary-(program ver).jar
-```
-
-in _cmd_.
+- Dictionary database in SQL from [_English-Vietnamese Dictionary Database Converter_](https://github.com/yenthanh132/avdict-database-sqlite-converter)

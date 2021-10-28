@@ -43,12 +43,7 @@ public class Dictionary {
      * @return Position of given wordTarget.
      */
     public int getIndex(String wordTarget) {
-        for (int i = 0; i < words.size(); i++) {
-            if (wordTarget.equals(this.getWord(i).getWordTarget())) {
-                return i;
-            }
-        }
-        return -1;
+        return words.indexOf(new Word(wordTarget, ""));
     }
 
     /**
@@ -59,7 +54,20 @@ public class Dictionary {
      */
     public String getWordExplain(String wordTarget) {
         int wordPos = this.getIndex(wordTarget);
-        return ((wordPos == -1) ? null : this.getWord(wordPos).getWordExplain());
+        return ((wordPos == -1) ? null
+                : this.getWord(wordPos).getWordExplain());
+    }
+
+    /**
+     * Getter function to get the pronounciation of given wordTarget.
+     *
+     * @param wordTarget The wordTarget to search for.
+     * @return Pronounciation of given wordTarget.
+     */
+    public String getWordPronounce(String wordTarget) {
+        int wordPos = this.getIndex(wordTarget);
+        return ((wordPos == -1) ? null
+                : this.getWord(wordPos).getWordPronounce());
     }
 
     /**

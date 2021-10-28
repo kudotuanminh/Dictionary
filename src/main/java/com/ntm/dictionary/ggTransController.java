@@ -15,6 +15,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.*;
 import com.jfoenix.controls.*;
 
+/** Held logics to control functions used in ggtrans FXML */
 public class ggTransController extends DictionaryManagement {
     @FXML
     private StackPane stackPane;
@@ -40,19 +41,18 @@ public class ggTransController extends DictionaryManagement {
             String langTo =
                     targetComboBox.getSelectionModel().getSelectedItem();
 
-            String urlStr =
+            URL url = new URL(
                     "https://script.google.com/macros/s/AKfycbzLFsIFyKdl05Ppfi-3fVPQQ1dfwNY5dc2HLTWnvzdYS3D4Wgg/exec"
                             + "?q=" + URLEncoder.encode(text, "UTF-8")
-                            + "&target=" + langTo + "&source=" + langFrom;
-            URL url = new URL(urlStr);
+                            + "&target=" + langTo + "&source=" + langFrom);
 
             HttpURLConnection connection =
                     (HttpURLConnection) url.openConnection();
             connection.setRequestProperty("User-Agent", "Mozilla/5.0");
 
-            InputStreamReader inputStream =
-                    new InputStreamReader(connection.getInputStream(), "UTF-8");
-            BufferedReader googleReader = new BufferedReader(inputStream);
+            BufferedReader googleReader =
+                    new BufferedReader(new InputStreamReader(
+                            connection.getInputStream(), "UTF-8"));
 
             StringBuilder response = new StringBuilder();
             String inputLine;
@@ -69,8 +69,8 @@ public class ggTransController extends DictionaryManagement {
     @FXML
     private void mainAppScene(MouseEvent event) throws Exception {
         Stage stage = (Stage) dictionaryTab.getScene().getWindow();
-        URL url = new File("src/main/app.fxml").toURI().toURL();
-        Parent root = FXMLLoader.load(url);
+        Parent root =
+                FXMLLoader.load(new File("src/main/app.fxml").toURI().toURL());
 
         stage.setScene(new Scene(root));
         stage.show();

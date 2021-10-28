@@ -3,9 +3,9 @@ package com.ntm.dictionary;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.image.*;
 import javafx.scene.Parent;
 import java.io.*;
-import java.net.URL;
 
 import javafx.fxml.FXMLLoader;
 
@@ -13,10 +13,12 @@ import javafx.fxml.FXMLLoader;
 public class DictionaryApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        URL url = new File("src/main/app.fxml").toURI().toURL();
-        Parent root = FXMLLoader.load(url);
+        Parent root =
+                FXMLLoader.load(new File("src/main/app.fxml").toURI().toURL());
 
         stage.setTitle("Dictionary");
+        stage.getIcons().addAll(
+                new Image(new File("src/images/icon.png").toURI().toString()));
         stage.setScene(new Scene(root));
         stage.show();
     }
